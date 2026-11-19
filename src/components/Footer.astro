@@ -1,0 +1,9 @@
+---
+import { site } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <span>© {year} {site.author}</span>
+  <a href="/rss.xml">RSS</a>
+</footer>

@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import { formatDate, getPosts } from '../data/posts';
+
+const posts = await getPosts();
+const groups = new Map<string, typeof posts>();
+for (const post of posts) {
+  const year = formatDate(post.data.date).year;
+  const list = groups.get(year) ?? [];
+  list.push(post);
+  groups.set(year, list);
+}
+
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+---
+
+<Base title="归档" description="按时间排列的全部文章。">
+  <h1 class="page-title">归档</h1>
+  <p class="page-lead">{posts.length} 篇</p>
+
+  {tags.length > 0 && (
+    <div class="tag-cloud">
+      {tags.map((tag) => <a href={`/tags/${tag}/`}>{tag}</a>)}
+    </div>
+  )}
+
+  {[...groups.entries()].map(([year, items]) => (
+    <section class="year-group">
+      <h2 class="year-label">{year}</h2>
+      <ol class="archive-list">
+        {items.map((post) => {
+          const date = formatDate(post.data.date);
+          return (
+            <li>
+              <a href={`/posts/${post.id}/`}>
+                <time datetime={date.iso}>{date.monthDay}</time>
+                <span>{post.data.title}</span>
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+  ))}
+</Base>

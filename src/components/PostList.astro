@@ -1,0 +1,31 @@
+---
+import { formatDate, type Post } from '../data/posts';
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+{posts.length === 0 ? (
+  <p class="empty">还没有文章。</p>
+) : (
+  <ol class="post-list">
+    {posts.map((post) => {
+      const date = formatDate(post.data.date);
+      return (
+        <li>
+          <a class="entry" href={`/posts/${post.id}/`}>
+            <span class="entry-meta">
+              <time datetime={date.iso}>{date.full}</time>
+              {post.data.tags[0] && <span class="entry-tag">{post.data.tags[0]}</span>}
+            </span>
+            <span class="entry-title">{post.data.title}</span>
+            <span class="entry-excerpt">{post.data.description}</span>
+          </a>
+        </li>
+      );
+    })}
+  </ol>
+)}
