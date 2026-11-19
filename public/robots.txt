@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://heckletbot.github.io/sitemap-index.xml

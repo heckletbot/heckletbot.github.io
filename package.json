@@ -1,0 +1,16 @@
+{
+  "name": "pinocchio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/publish.mjs",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "^3.6.0",
+    "@fontsource-variable/newsreader": "^5.2.8",
+    "astro": "^5.15.0"
+  }
+}
