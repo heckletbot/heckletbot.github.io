@@ -1,5 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+
+if (!site.showAbout) {
+  return Astro.redirect('/');
+}
 ---
 
 <Base title="关于" description="关于 Pinocchio 和 caocheng。">

@@ -6,7 +6,8 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/404'),
+      filter: (page) =>
+        !page.includes('/404') && !page.includes('/about') && !page.includes('/resume'),
     }),
   ],
   markdown: {
@@ -24,7 +25,7 @@ export default defineConfig({
     '/archives/2024/11': '/archive/',
     '/categories': '/archive/',
     '/categories/博客': '/archive/',
-    '/links': '/about/',
+    '/links': '/',
     '/tags': '/archive/',
   },
 });

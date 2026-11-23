@@ -1,5 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+
+if (!site.showResume) {
+  return Astro.redirect('/');
+}
 ---
 
 <Base title="简历" description="caocheng 的简历。后端开发，中南大学计算机学院。">
