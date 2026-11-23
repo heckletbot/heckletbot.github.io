@@ -1,11 +1,13 @@
 ---
+import { site } from '../data/site';
+
 const path = Astro.url.pathname;
 const items = [
-  { href: '/', label: '文章' },
-  { href: '/archive/', label: '归档' },
-  { href: '/about/', label: '关于' },
-  { href: '/resume/', label: '简历' },
-];
+  { href: '/', label: '文章', show: true },
+  { href: '/archive/', label: '归档', show: true },
+  { href: '/about/', label: '关于', show: site.showAbout },
+  { href: '/resume/', label: '简历', show: site.showResume },
+].filter((item) => item.show);
 
 function current(href: string) {
   if (href === '/') return path === '/' ? 'page' : undefined;

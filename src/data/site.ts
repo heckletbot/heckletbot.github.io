@@ -3,4 +3,6 @@ export const site = {
   description: '一些生活随笔和技术博客',
   author: 'caocheng',
   url: 'https://heckletbot.github.io',
+  showAbout: false,
+  showResume: false,
 } as const;
