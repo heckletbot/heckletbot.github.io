@@ -469,6 +469,15 @@ input {
 
 .skill-list li { margin: 0.35rem 0; }
 
+.site-footer {
+  margin-top: 4.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--faint);
+  font-size: 0.86rem;
+  text-align: center;
+}
+
 .empty {
   margin-top: 2rem;
   color: var(--muted);
@@ -504,6 +513,7 @@ input {
 @media print {
   .site-header .nav,
   .theme-toggle,
+  .site-footer,
   .skip { display: none !important; }
 
   body { background: white; color: black; }

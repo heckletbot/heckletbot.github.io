@@ -18,6 +18,7 @@ const {
 
 const fullTitle = title === site.title ? site.title : `${title} · ${site.title}`;
 const canonical = new URL(Astro.url.pathname, site.url).toString();
+const year = new Date().getFullYear();
 ---
 
 <!doctype html>
@@ -56,6 +57,7 @@ const canonical = new URL(Astro.url.pathname, site.url).toString();
       <main id="content">
         <slot />
       </main>
+      <footer class="site-footer">© {year} {site.author}</footer>
     </div>
     <script is:inline>
       (function () {
